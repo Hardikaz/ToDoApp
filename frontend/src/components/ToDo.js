@@ -1,8 +1,17 @@
 import React from 'react'
 
-const ToDo = () => {
+import {BiEdit} from "react-icons/bi"
+import {AiFillDelete} from "react-icons/ai"
+
+const ToDo = ({text, updateMode, deleteToDo}) => {
   return (
-    <div>ToDo</div>
+    <div className="todo">
+        <div className="text">{text}</div>
+        <div className="icons">
+          <BiEdit className='icon' onClick={updateMode}></BiEdit>
+          <AiFillDelete className='icon' onClick={deleteToDo} />
+        </div>
+    </div>
   )
 }
 

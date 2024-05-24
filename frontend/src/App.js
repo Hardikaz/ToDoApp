@@ -1,6 +1,14 @@
-
-
+import ToDo from "./components/ToDo"
+import {useState,useEffect} from 'react'
+import {getAllToDo} from "./utils/HandleApi"
 function App() {
+
+  const [toDo, setToDo]=useState([])
+  
+  useEffect(() => {
+    getAllToDo(setToDo)
+  },[])
+
   return (
     <div className="App">
      
@@ -10,7 +18,11 @@ function App() {
       <input type="text" placeholder="Add ToDo..."/>
       <div className="add">Add</div>
       </div>
-      <div className="list"></div>
+      <div className="list">
+
+      {toDo.map((item) => <ToDo key={item._id} text={item.text} />)}
+
+      </div>
      </div>
     </div>
   );
